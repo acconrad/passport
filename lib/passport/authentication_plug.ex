@@ -21,7 +21,7 @@ defmodule Passport.AuthenticationPlug do
   ]
 
   def require_admin(conn, opts \\ []) do
-    opts = Dict.merge(@admin_defaults, opts)
+    opts = Keyword.merge(@admin_defaults, opts)
     case Passport.SessionManager.admin?(conn) do
       true ->
         conn
@@ -31,7 +31,7 @@ defmodule Passport.AuthenticationPlug do
   end
 
   def require_login(conn, opts \\ []) do
-    opts = Dict.merge(@login_defaults, opts)
+    opts = Keyword.merge(@login_defaults, opts)
     case Passport.SessionManager.logged_in?(conn) do
       true ->
         conn
@@ -41,7 +41,7 @@ defmodule Passport.AuthenticationPlug do
   end
 
   def require_logout(conn, opts \\ []) do
-    opts = Dict.merge(@logout_defaults, opts)
+    opts = Keyword.merge(@logout_defaults, opts)
     case Passport.SessionManager.logged_out?(conn) do
       true ->
         conn
