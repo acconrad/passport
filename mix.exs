@@ -3,7 +3,7 @@ defmodule Passport.Mixfile do
 
   def project do
     [app: :passport,
-     version: "0.5.6",
+     version: "0.5.7",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -30,7 +30,9 @@ defmodule Passport.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.2.2"},
-      {:comeonin, "~> 3.0"}
+      {:phoenix_ecto, "~> 3.2.2"},
+      {:comeonin, "~> 3.0"},
+      {:postgrex, "~> 0.13"}
     ]
   end
 end
