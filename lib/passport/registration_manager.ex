@@ -3,7 +3,7 @@ defmodule Passport.RegistrationManager do
   import Passport.Model
 
   def register(params) do
-    changeset = user_model.changeset(user_model.__struct__, params)
+    changeset = user_model().changeset(user_model.__struct__, params)
 
     changeset = changeset
       |> validate_format(:email, ~r/@/)
@@ -11,7 +11,7 @@ defmodule Passport.RegistrationManager do
       |> set_hashed_password
       |> unique_constraint(:email)
 
-    repo.insert(changeset)
+    repo().insert(changeset)
   end
 
   def downcase_email(changeset = %{params: %{"email" => email}}) do
